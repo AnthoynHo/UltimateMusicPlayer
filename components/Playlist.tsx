@@ -11,10 +11,12 @@ import {
 } from 'react-native';
 import TrackPlayer, {
   useTrackPlayerEvents,
+  usePlaybackState,
   Event,
   State
 } from 'react-native-track-player';
 import { setupPlayer, addTracks } from './trackPlayerServices';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 function Playlist() {
 
@@ -33,57 +35,98 @@ function Playlist() {
         },
       });
 
-  const [queue, setQueue] = useState([]);
-  const [currentTrack, setCurrentTrack] = useState(0);
+    const [queue, setQueue] = useState([]);
+    const [currentTrack, setCurrentTrack] = useState(0);
 
-  async function loadPlaylist() {
-    const queue = await TrackPlayer.getQueue();
-    setQueue(queue);
-  }
-
-  useEffect(() => {
-    loadPlaylist();
-  }, []);
-
-  useTrackPlayerEvents([Event.PlaybackTrackChanged], async (event) => {
-    if(event.state == State.nextTrack) {
-      let index = await TrackPlayer.getCurrentTrack();
-      setCurrentTrack(index);
-    }
-  });
-
-  function PlaylistItem({index, title, isCurrent}) {
-
-    function handleItemPress() {
-      TrackPlayer.skip(index);
+    async function loadPlaylist() {
+      const queue = await TrackPlayer.getQueue();
+      setQueue(queue);
     }
 
-    return (
-      <TouchableOpacity onPress={handleItemPress}>
-        <Text
-          style={{...styles.playlistItem,
-            ...{backgroundColor: isCurrent ? '#666' : 'transparent'}}}>
-        {title}
-        </Text>
-      </TouchableOpacity>
+    useEffect(() => {
+      loadPlaylist();
+    }, []);
+
+    useTrackPlayerEvents([Event.PlaybackTrackChanged], (event) => {
+      if(event.state == State.nextTrack) {
+        TrackPlayer.getCurrentTrack().then((index) => setCurrentTrack(index));
+      }
+    });
+
+    function PlaylistItem({index, title, isCurrent}) {
+
+      function handleItemPress() {
+        TrackPlayer.skip(index);
+      }
+
+      return (
+        <TouchableOpacity onPress={handleItemPress}>
+          <Text
+            style={{...styles.playlistItem,
+              ...{backgroundColor: isCurrent ? '#666' : 'transparent'}}}>
+          {title}
+          </Text>
+        </TouchableOpacity>
+      );
+    }
+
+    return(
+      <View>
+        <View style={styles.playlist}>
+          <FlatList
+            data={queue}
+            renderItem={({item, index}) => <PlaylistItem
+                                              index={index}
+                                              title={item.title}
+                                              isCurrent={currentTrack == index }/>
+            }
+          />
+        </View>
+        <Controls/>
+      </View>
     );
   }
 
-  return(
-    <View>
-      <View style={styles.playlist}>
-        <FlatList
-          data={queue}
-          renderItem={({item, index}) => <PlaylistItem
-                                            index={index}
-                                            title={item.title}
-                                            isCurrent={currentTrack == index }/>
-          }
-        />
+  function Controls({ onShuffle }) {
+    const playerState = usePlaybackState();
+    const [isPlaying, setIsPlaying] = useState(playerState === State.Playing);
+
+    console.log(State);
+    console.log(playerState);
+
+    const handlePlayPress = async () => {
+        if (isPlaying) {
+          await TrackPlayer.pause();
+        } else {
+          await TrackPlayer.play();
+        }
+
+        setIsPlaying(!isPlaying);
+      };
+
+
+
+    return(
+      //<View style={{flexDirection: 'row',
+        //flexWrap: 'wrap', alignItems: 'center'}}>
+        <View key={playerState} style={{ flexDirection: 'row',
+         flexWrap: 'wrap', alignItems: 'center' }}>
+          <Icon.Button
+            name="arrow-left"
+            size={28}
+            backgroundColor="transparent"
+            onPress={() => TrackPlayer.skipToPrevious()}/>
+          <Icon.Button
+                name={isPlaying ? 'pause' : 'play'}
+                size={28}
+                backgroundColor="transparent"
+                onPress={handlePlayPress}/>
+          <Icon.Button
+            name="arrow-right"
+            size={28}
+            backgroundColor="transparent"
+            onPress={() => TrackPlayer.skipToNext()}/>
       </View>
-    </View>
-  );
-
-
-}
+    );
+  }
 export default Playlist;
