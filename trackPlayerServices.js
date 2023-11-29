@@ -40,16 +40,27 @@ export async function setupPlayer() {
   }
 }
 
-export async function addTracks() {
+export async function addTracks(tracks) {
+  console.log(tracks);
   await TrackPlayer.add([
-    {
-      id: '1',
-      url: require('./assets/Solo.mp3'),
-      title: 'Solo',
-      artist: 'Prismo',
-      duration: 183,
-    }
-  ]);
+                          { id: '1',
+                            url: require('./assets/music/Back-One-Day.mp3'),
+                            title: 'Back One Day',
+                            artist: 'NEEFEX',
+                            duration: 231,
+                          },
+                          { id: '2',
+                            url: require('./assets/music/Careless.mp3'),
+                            title: 'Careless',
+                            artist: 'NEEFEX',
+                            duration: 296,
+                          },
+                          { id: '3',
+                            url: require('./assets/music/Destiny.mp3'),
+                            title: 'Destiny',
+                            artist: 'NEEFEX',
+                            duration: 206,
+                        }]);
   await TrackPlayer.setRepeatMode(RepeatMode.Queue);
 }
 
