@@ -83,3 +83,10 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+#Attribution
+This project makes use of the react-native-track-player module and the react-native-vector-icons icon pack.
+These can be found at:
+   react-native-track-player: https://github.com/doublesymmetry/react-native-track-player#example-setup
+   react-native-vector-icons: https://github.com/oblador/react-native-vector-icons
+
