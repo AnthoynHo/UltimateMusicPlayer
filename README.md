@@ -1,4 +1,5 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli), [`@react-native-track-player`](https://github.com/doublesymmetry/react-native-track-player) and [`@react-native-vector-icons`](https://github.com/oblador/react-native-vector-icons).
+This project is to create a music player for an android device.
 
 # Getting Started
 
@@ -87,6 +88,6 @@ To learn more about React Native, take a look at the following resources:
 #Attribution
 This project makes use of the react-native-track-player module and the react-native-vector-icons icon pack.
 These can be found at:
-   react-native-track-player: https://github.com/doublesymmetry/react-native-track-player#example-setup
+   react-native-track-player: https://github.com/doublesymmetry/react-native-track-player
    react-native-vector-icons: https://github.com/oblador/react-native-vector-icons
 
