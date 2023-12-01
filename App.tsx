@@ -15,7 +15,10 @@ import TrackPlayer, {
   State
 } from 'react-native-track-player';
 import { setupPlayer, addTracks } from './trackPlayerServices';
-import Playlist from './components/Playlist'
+import Playlist from './components/Playlist';
+import Controls from './components/Controls';
+import Header from './components/SongHeader';
+import TrackProgress from './components/Tracker';
 
 function App() {
 
@@ -46,7 +49,10 @@ function App() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header/>
+      <TrackProgress/>
       <Playlist/>
+      <Controls/>
     </SafeAreaView>
   );
 }
