@@ -7,8 +7,8 @@ function Controls({ onShuffle }) {
     const playerState = usePlaybackState();
     const [isPlaying, setIsPlaying] = useState(playerState === State.Playing);
 
-    console.log(State);
-    console.log(playerState);
+    //console.log(State);
+    //console.log(playerState);
 
     const handlePlayPress = async () => {
         if (isPlaying) {

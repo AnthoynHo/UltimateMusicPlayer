@@ -28,7 +28,7 @@ songTitle: {
     }
   });
 
-console.log(info.title);
+//console.log(info.title);
 
   async function setTrackInfo() {
     const track = await TrackPlayer.getCurrentTrack();

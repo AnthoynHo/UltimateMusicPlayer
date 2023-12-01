@@ -1,19 +1,23 @@
 [
-  { id: '1',
-    url: require('./assets/music/Back-One-Day.mp3'),
-    title: 'Back One Day',
-    artist: 'NEEFEX',
-    duration: 231,
+  {
+    "id": "1",
+    "url": "./assets/music/Back-One-Day.mp3",
+    "title": "Back One Day",
+    "artist": "NEEFEX",
+    "duration": 231
+  },
+  {
+    "id": "2",
+    "url": "./assets/music/Careless.mp3",
+    "title": "Careless",
+    "artist": "NEEFEX",
+    "duration": 296
+  },
+  {
+    "id": "3",
+    "url": "./assets/music/Destiny.mp3",
+    "title": "Destiny",
+    "artist": "NEEFEX",
+    "duration": 206
   }
-  { id: '2',
-    url: require('./assets/music/Careless.mp3'),
-    title: 'Careless',
-    artist: 'NEEFEX',
-    duration: 296,
-  }
-  { id: '3',
-    url: require('./assets/music/Destiny.mp3'),
-    title: 'Destiny',
-    artist: 'NEEFEX',
-    duration: 206,
-  }]
+]

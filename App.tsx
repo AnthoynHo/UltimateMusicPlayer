@@ -19,10 +19,14 @@ import Playlist from './components/Playlist';
 import Controls from './components/Controls';
 import Header from './components/SongHeader';
 import TrackProgress from './components/Tracker';
+import trackData from "./tracks.json";
 
 function App() {
-
+  const [tracks, setTracks] = useState(trackData);
+  //console.log(tracks);
   const [isPlayerReady, setIsPlayerReady] = useState(false);
+
+
 
   useEffect(() => {
     async function setup() {
@@ -30,7 +34,7 @@ function App() {
 
       const queue = await TrackPlayer.getQueue();
       if(isSetup && queue.length <= 0) {
-        await addTracks();
+        await addTracks(tracks);
       }
 
       setIsPlayerReady(isSetup);
