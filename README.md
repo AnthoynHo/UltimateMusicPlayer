@@ -10,6 +10,7 @@ This project is to create a music player for an android device.
 ## Step 0: Additional
 
 npm install --save react-native-track-player
+npm install react-native-fs
 
 ## Step 1: Start the Metro Server
 

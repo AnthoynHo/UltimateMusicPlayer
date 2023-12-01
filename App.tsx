@@ -19,6 +19,8 @@ import Playlist from './components/Playlist';
 import Controls from './components/Controls';
 import Header from './components/SongHeader';
 import TrackProgress from './components/Tracker';
+import { requestStoragePermission } from './filemanager';
+import { getFiles } from './filemanager';
 
 function App() {
 
@@ -30,6 +32,7 @@ function App() {
 
       const queue = await TrackPlayer.getQueue();
       if(isSetup && queue.length <= 0) {
+		await requestStoragePermission();
         await addTracks();
       }
 

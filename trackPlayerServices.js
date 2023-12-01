@@ -4,6 +4,7 @@ import TrackPlayer, {
   RepeatMode,
   Event
 } from 'react-native-track-player';
+import { getFiles } from './filemanager';
 
 export async function setupPlayer() {
   let isSetup = false;
@@ -42,6 +43,10 @@ export async function setupPlayer() {
 
 export async function addTracks(tracks) {
   console.log(tracks);
+  getFiles()
+  .catch(error => {
+	console.error('Error in addTracks:', error);
+  })
   await TrackPlayer.add([
                           { id: '1',
                             url: require('./assets/music/Back-One-Day.mp3'),
@@ -63,6 +68,7 @@ export async function addTracks(tracks) {
                         }]);
   await TrackPlayer.setRepeatMode(RepeatMode.Queue);
 }
+
 
 export async function playbackService() {
   // TODO: Attach remote event handlers
