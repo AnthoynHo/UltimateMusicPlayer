@@ -42,7 +42,7 @@ export async function setupPlayer() {
 }
 
 export async function addTracks(tracks) {
-  console.log(tracks);
+  //console.log(tracks);
   getFiles()
   .catch(error => {
 	console.error('Error in addTracks:', error);
