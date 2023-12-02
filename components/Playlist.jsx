@@ -21,17 +21,16 @@ function Playlist() {
 
     const styles = StyleSheet.create({
         playlist: {
-          marginTop: 40,
-          marginBottom: 40,
+
           color:'#eee'
         },
         playlistItem: {
           fontSize: 16,
-          paddingTop: 4,
-          paddingBottom: 4,
-          paddingLeft: 8,
-          paddingRight: 8,
-          borderRadius: 4,
+          paddingTop: 5,
+          paddingBottom: 5,
+          paddingLeft: 10,
+          paddingRight: 10,
+          borderRadius: 5,
           color:'#eee'
         },
       });

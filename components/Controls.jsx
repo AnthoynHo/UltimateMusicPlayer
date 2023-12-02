@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import TrackPlayer, { usePlaybackState, State } from 'react-native-track-player';
 
-function Controls({ onShuffle }) {
+function Controls({ iconSize }) {
     const playerState = usePlaybackState();
     const [isPlaying, setIsPlaying] = useState(playerState === State.Playing);
 
@@ -23,23 +23,21 @@ function Controls({ onShuffle }) {
 
 
     return(
-      //<View style={{flexDirection: 'row',
-        //flexWrap: 'wrap', alignItems: 'center'}}>
         <View key={playerState} style={{ flexDirection: 'row',
-         flexWrap: 'wrap', alignItems: 'center' }}>
+         flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
           <Icon.Button
             name="arrow-left"
-            size={28}
+            size={iconSize}
             backgroundColor="transparent"
             onPress={() => TrackPlayer.skipToPrevious()}/>
           <Icon.Button
                 name={isPlaying ? 'pause' : 'play'}
-                size={28}
+                size={iconSize}
                 backgroundColor="transparent"
                 onPress={handlePlayPress}/>
           <Icon.Button
             name="arrow-right"
-            size={28}
+            size={iconSize}
             backgroundColor="transparent"
             onPress={() => TrackPlayer.skipToNext()}/>
       </View>
